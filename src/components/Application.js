@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment }   from "react";
 
 import "components/Application.scss";
 import DayList from "./DayList";
+import Appointment from "components/Appointment";
 import  { useState } from "react";
 
 const days = [
@@ -22,12 +23,54 @@ const days = [
   },
 ];
 
+const appointments = {
+  "1": {
+    id: 1,
+    time: "12pm",
+  },
+  "2": {
+    id: 2,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer:{
+        id: 3,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png",
+      }
+    }
+  },
+  "3": {
+    id: 3,
+    time: "2pm",
+  },
+  "4": {
+    id: 4,
+    time: "3pm",
+    interview: {
+      student: "Archie Andrews",
+      interviewer:{
+        id: 4,
+        name: "Cohana Roy",
+        avatar: "https://i.imgur.com/FK8V841.jpg",
+      }
+    }
+  },
+  "5": {
+    id: 5,
+    time: "4pm",
+  }
+};
+
+const mappedAppointment = Object.values(appointments).map(eachAppointment=>(
+
+ <Appointment {...eachAppointment} key = {eachAppointment.id}/>
+))
+
 export default function Application(props) {
+
 const [day, setDay] = useState("Monday")
 
-
-
-console.log("day",day)
   return (
     <main className="layout">
       <section className="sidebar">
@@ -40,8 +83,8 @@ console.log("day",day)
 
         <nav className="sidebar__menu">
           <DayList days={days}
-            day={day}
-            setDay={day => {setDay(day)}} />
+            value={day} //old : day = {day} setDay = {setDay}
+            onChange={ setDay } />
         </nav>
 
         <img
@@ -51,6 +94,10 @@ console.log("day",day)
         />
       </section>
       <section className="schedule">
+
+{mappedAppointment}
+<Appointment key="last" time="5pm" />
+
 
       </section>
     </main>
