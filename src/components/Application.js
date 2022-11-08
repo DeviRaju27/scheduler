@@ -9,7 +9,10 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay} from "helpe
 
 
 
+
 export default function Application(props) {
+ 
+
 
   const [state, setState] = useState({
     day: "Monday",
@@ -17,6 +20,44 @@ export default function Application(props) {
     appointments: {},
     interviewers:{}
   });
+
+  function cancelInterview(id){
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.delete(`/api/appointments/${id}`, appointment)
+    .then( () => {
+      setState({...state, appointments})
+    })
+    
+  }
+
+  function bookInterview(id, interview) {
+    console.log("id from bookinterview",id);
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+
+    return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
+    .then(() => {
+      setState({ ...state, appointments })
+    })
+    .catch(e => console.log(e))
+  }
 
   const setDay = day => setState({ ...state, day }); // prop to daylist
 
@@ -31,19 +72,18 @@ export default function Application(props) {
       .then((response) => {
 console.log("res",response)
         setState(prev => ({ ...prev, days: response[0].data, appointments: response[1].data, interviewers: response[2].data }))
-        //  setDays(response.data)
       })
   }, []);
 
-  const dailyAppointments = getAppointmentsForDay(state, state.day) 
 
-  // const mappedAppointment = dailyAppointments.map(eachAppointment => (
-  //   <Appointment {...eachAppointment} key={eachAppointment.id} />
-  // ))
+
+  
+  const dailyAppointments = getAppointmentsForDay(state, state.day) 
 
   const mappedAppointment = dailyAppointments.map(eachAppointment => {
 
     const interview = getInterview(state, eachAppointment.interview);
+    console.log("interview obj",interview)
     const interviewersForDay = getInterviewersForDay(state, state.day)
 
     return (
@@ -52,9 +92,14 @@ console.log("res",response)
        time = {eachAppointment.time}
        interview = {interview}
        interviewers = {interviewersForDay}
-       key={eachAppointment.id} />
+       key={eachAppointment.id} 
+       bookInterview = { bookInterview }
+       cancelInterview = { cancelInterview } />
     )
   });
+
+
+
 
   return (
     <main className="layout">

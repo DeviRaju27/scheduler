@@ -18,7 +18,7 @@ return result
 
 export function getInterviewersForDay(state,day){
 
-  let filteredInterviewer = state.days.filter(d => d.name == day)
+  let filteredInterviewer = state.days.filter(d => d.name === day)
 
   if(!filteredInterviewer) return [];
 
