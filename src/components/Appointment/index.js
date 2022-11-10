@@ -42,6 +42,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    // console.log("interviewer from index.js", interviewer)
 
     transition(SAVING)
 
@@ -53,7 +54,7 @@ export default function Appointment(props) {
 
 
   return (
-    <article className='appointment'>
+    <article className='appointment' data-testid="appointment">
       <Header time={props.time}> </Header>
 
 
@@ -74,7 +75,7 @@ export default function Appointment(props) {
 
         />
       )}
-      {mode === SAVING && <Status message={"saving"} />}
+      {mode === SAVING && <Status message={"Saving"} />}
       {mode === CONFIRM && (
         <Confirm
           onCancel={back}

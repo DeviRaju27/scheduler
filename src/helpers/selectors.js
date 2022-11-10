@@ -1,5 +1,5 @@
 export function getAppointmentsForDay(state, day) {
- 
+
   let filteredDay = state.days.filter(d => d.name === day);
   let result = [];
   
@@ -13,13 +13,14 @@ export function getAppointmentsForDay(state, day) {
     const appointmentsArray = state.appointments[dd]
     result.push(appointmentsArray)  
   }
+  // console.log("result".result)
 return result
 }
 
 export function getInterviewersForDay(state,day){
 
   let filteredInterviewer = state.days.filter(d => d.name === day)
-
+// console.log("filteredInterviewer",filteredInterviewer)
   if(!filteredInterviewer) return [];
 
   let result = [];

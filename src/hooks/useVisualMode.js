@@ -25,11 +25,11 @@ export default function useVisualMode(initial) {
       setHistory(prev => {
         const newState = [...prev]
         newState.pop()
-        console.log("newstate",newState)
+        // console.log("newstate",newState)
         return newState
       })
       // setMode(history[history.length - 2])
-      console.log("his", history)
+      // console.log("his", history)
     }
 
   }
