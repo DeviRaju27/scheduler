@@ -1,23 +1,65 @@
-# Interview Scheduler
+# __Interview Scheduler__
 
-## Setup
+Interview Scheduler is a Single Page Application built 
+using React's latest tools and techniques that allows users to book, edit and cancel interviews. We combine a concise API with Websocket to build a realtime experience
+
+-----------------------------------------
+## __Project Stack__
+
+Front-end : React, HTML, SASS, JavaScript, JSX, Axios
+Back-end: Node.js, PostgreSQL(RDBMS)
+
+--------------------------
+
+## __Setup__
 
 Install dependencies with `npm install`.
 
-## Running Webpack Development Server
+### Tools
+  
+- ### webpack-dev-server
+ to run your entire application in development mode
 
 ```sh
 npm start
 ```
 
-## Running Jest Test Framework
+- ####  Jest Test Framework
 
+to run unit or integration tests from the command line
 ```sh
 npm test
 ```
 
-## Running Storybook Visual Testbed
+- #### Storybook
 
-```sh
+manually test your components in isolation
+```sh 
 npm run storybook
 ```
+- #### Cypress
+
+to run automated end-to-end tests in the browser
+```sh
+npm run cypress
+
+```
+
+------------------------------
+
+## __Features__
+
+- Appointment Days (Monday to Friday) are listed on the left side bar with the remaining availabilty/spots, which gets updated after booking or cancellation
+- Main page contains available spots, each day has 5 spots,  starting from 12PM to 4PM
+- User can switch between days and see detailed information
+- Booked Interviews are displayed with the student name and interviewer name
+- Empty slots are displayed with an Add button for user to book new interviews
+- Booked interviews can be edited or deleted if needed
+- Delete option has confirmation message before deleting the data
+--------------------
+
+## __Screenshots__
+
+![Home-Page]()
+![Add/Edit Page]()
+![Delete Page]()
