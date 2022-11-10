@@ -6,8 +6,8 @@ const Empty = (props) => {
       <img
         className='appointment__add-button'
         src='images/add.png'
-        alt='Add' 
-        onClick = {props.onAdd}/>
+        alt='Add'
+        onClick={props.onAdd} />
     </main>
   )
 }

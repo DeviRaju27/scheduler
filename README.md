@@ -7,6 +7,7 @@ using React's latest tools and techniques that allows users to book, edit and ca
 ## __Project Stack__
 
 Front-end : React, HTML, SASS, JavaScript, JSX, Axios
+
 Back-end: Node.js, PostgreSQL(RDBMS)
 
 --------------------------
@@ -60,6 +61,6 @@ npm run cypress
 
 ## __Screenshots__
 
-![Home-Page]()
-![Add/Edit Page]()
-![Delete Page]()
+![Home-Page](https://github.com/DeviRaju27/scheduler/blob/master/docs/Home-page.png)
+![Add/Edit Page](https://github.com/DeviRaju27/scheduler/blob/master/docs/Add:Edit%20page.png)
+![Delete Page](https://github.com/DeviRaju27/scheduler/blob/master/docs/Delete-page.png)

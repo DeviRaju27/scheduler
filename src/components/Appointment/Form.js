@@ -9,18 +9,21 @@ const Form = (props) => {
   const [formInterviewer, SetformInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+
+//function to set the state for student and interviewer   
   const reset = () => {
     SetformStudent("")
     SetformInterviewer(null)
-
   }
+
+  //function to cancel current changes using reset function and onCancel function
   const cancel = () => {
     reset()
     props.onCancel()
   }
 
+  //function to throw error if student or interviewer is empty
   function validate() {
-   
 
     if (formStudent === "") {
       setError("student name cannot be blank");
@@ -54,8 +57,6 @@ const Form = (props) => {
           </section>
         </form>
 
-
-
         <InterviewerList
           interviewers={props.interviewers}
           value={formInterviewer}
@@ -66,7 +67,6 @@ const Form = (props) => {
         <section className="appointment__actions">
           <Button danger onClick={() => cancel()}>Cancel</Button>
           <Button confirm onClick={() => validate()}>Save</Button>
-          {/* <Button confirm onClick={() => props.onSave(formStudent, formInterviewer)}>Save</Button> */}
         </section>
       </section>
     </main>
@@ -74,7 +74,7 @@ const Form = (props) => {
 }
 
 Form.propTypes = {
-  student : PropTypes.string
+  student: PropTypes.string
 };
 
 export default Form
