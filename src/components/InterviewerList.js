@@ -8,7 +8,7 @@ function InterviewerList(props) {
 
   //Mapping through interviewer array to get interviewer information
   const interviewersArray = props.interviewers
-  
+
   const mappedInterviewers = interviewersArray.map(eachInterviewer => (<InterviewerListItem
     name={eachInterviewer.name}
     avatar={eachInterviewer.avatar}
@@ -16,8 +16,6 @@ function InterviewerList(props) {
     setInterviewer={() => props.onChange(eachInterviewer.id)}
     key={eachInterviewer.id}
   ></InterviewerListItem>))
-
-
 
   return (
     <section className="interviewers">
